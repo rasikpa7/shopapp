@@ -34,6 +34,10 @@ class Cart with ChangeNotifier {
 
     
   }
+  void removeItem(String productId){
+    _items.remove(productId);
+    notifyListeners();
+  }
 
   void addItem(String productId, double price, String title) {
     if (_items.containsKey(productId)) {
@@ -56,6 +60,11 @@ class Cart with ChangeNotifier {
               1,
               price: price));
     }
+    notifyListeners();
+  }
+
+  void clear(){
+    _items={};
     notifyListeners();
   }
 }
